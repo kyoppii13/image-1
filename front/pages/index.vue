@@ -1,7 +1,8 @@
 <template>
   <v-row justify="center" align="center">
     <v-col cols="12" sm="8" md="6">{{ test }}</v-col>
-    <v-btn @click="getTest()">button</v-btn>
+    <v-btn @click="login()">login</v-btn>
+    <v-btn @click="logout()">logout</v-btn>
   </v-row>
 </template>
 
@@ -16,10 +17,11 @@ export default Vue.extend({
   },
   components: {},
   methods: {
-    async getTest() {
-      const url = 'http://localhost:5000/api/v1/test'
-      const response = await this.$axios.$get(url)
-      this.$data.test = response.hello
+    login() {
+      this.$store.dispatch('login')
+    },
+    logout() {
+      this.$store.dispatch('logout')
     },
   },
 })
