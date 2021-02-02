@@ -7,3 +7,11 @@ WORKDIR $APP_HOME
 RUN apk update && yarn add create-nuxt-app
 
 COPY package.json ${APP_HOME}/package.json
+
+ADD . ${APP_HOME}
+
+EXPOSE 3000
+
+RUN yarn generate
+
+CMD ["yarn", "start"]

@@ -1,9 +1,10 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">{{ test }}</v-col>
-    <v-btn @click="login()">login</v-btn>
-    <v-btn @click="logout()">logout</v-btn>
-    <v-btn @click="get()">get</v-btn>
+  <v-row justify="center" align="center" class="text-center">
+    <v-col cols="12">
+      <v-btn @click="login()"><v-icon>mdi-google</v-icon>login</v-btn>
+      <v-btn @click="logout()">logout</v-btn>
+      <v-btn @click="get()">get</v-btn>
+    </v-col>
   </v-row>
 </template>
 

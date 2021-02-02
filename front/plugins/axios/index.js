@@ -13,6 +13,7 @@
 // }
 
 export default ({ $axios }) => {
+  // $axios.defaults.baseURL = process.env.BASE_URL || 'http://localhost:5000'
   $axios.defaults.baseURL = 'http://localhost:5000'
 
   $axios.onRequest((config) => {

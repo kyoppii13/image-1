@@ -14,3 +14,12 @@ COPY Gemfile ${APP_ROOT}/Gemfile
 COPY Gemfile.lock ${APP_ROOT}/Gemfile.lock
 
 RUN bundle install
+
+ADD . ${APP_HOME}
+
+EXPOSE 80
+
+RUN chmod +x /app/entrypoint.sh
+
+CMD ["/app/entrypoint.sh"]
+# CMD ["rails", "s", "-b", "0.0.0.0", "-p", "80"]
