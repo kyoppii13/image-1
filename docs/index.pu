@@ -1,0 +1,27 @@
+@startuml
+title ImageQ
+package User {
+  entity Users{
+    * id : integer <<PK>>
+    --
+    * email : string <<UK>>
+    * name : string
+    * created_at : datetime
+    * updated_at : datetime
+  }
+
+}
+package Question{
+  entity Questions {
+    * id : integer <<PK>>
+    --
+    * image_url : string
+    * user_id : integer <<FK>>
+    * delete_flag : boolean
+    * adult_flag : boolean
+    * created_at : datetime
+    * updated_at : datetime
+  }
+  Users ||--down--o{ Questions
+}
+@enduml
