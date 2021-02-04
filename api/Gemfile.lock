@@ -68,6 +68,7 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.7)
       concurrent-ruby (~> 1.0)
+    jb (0.8.0)
     jwt (1.5.6)
     listen (3.4.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -154,6 +155,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
+  jb
   jwt
   listen (~> 3.2)
   mysql2 (>= 0.4.4)

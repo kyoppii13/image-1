@@ -1,14 +1,15 @@
 class Api::V1::UsersController < ApplicationController
   before_action :validate_jwt
 
-  def index
-    users = current_user
-    render json: users
+  def mypage
+    @user = current_user
+    render :mypage
   end
 
-
-  def test
-    render json: {hello: 'hello world'}
+  def show
+    @user = User.find(params[:id])
+    @contents = @user.contents
+    render :show
   end
 
   private

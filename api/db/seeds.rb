@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+user = User.create(name: 'test', email: 'test@gmail.com')
+Question.create(image_url: 'http://hogehoge.png', delete_flag: false, adult_flag: false, user: user)
