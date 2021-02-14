@@ -1,8 +1,11 @@
 <template>
   <v-app>
     <v-app-bar :clipped-left="clipped" fixed app>
-      <v-toolbar-title v-text="title" />
+      <nuxt-link to="/">
+        <v-toolbar-title v-text="title" />
+      </nuxt-link>
       <v-spacer />
+      <v-btn v-if="isLogin" @click="logout()">logout</v-btn>
     </v-app-bar>
     <v-main>
       <v-container>
@@ -16,7 +19,8 @@
 </template>
 
 <script>
-export default {
+import Vue from 'vue'
+export default Vue.extend({
   data() {
     return {
       clipped: false,
@@ -40,5 +44,15 @@ export default {
       title: 'ImageQ',
     }
   },
-}
+  computed: {
+    isLogin() {
+      return this.$store.state.firebase.isLogin
+    },
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch('firebase/logout')
+    },
+  },
+})
 </script>

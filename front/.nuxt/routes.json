@@ -7,6 +7,20 @@
     "_name": "_1bbad8e0"
   },
   {
+    "name": "login",
+    "path": "/login",
+    "component": "/app/pages/login.vue",
+    "chunkName": "pages/login",
+    "_name": "_10ba8d22"
+  },
+  {
+    "name": "mypage",
+    "path": "/mypage",
+    "component": "/app/pages/mypage.vue",
+    "chunkName": "pages/mypage",
+    "_name": "_9b513db6"
+  },
+  {
     "name": "index",
     "path": "/",
     "component": "/app/pages/index.vue",

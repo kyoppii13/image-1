@@ -1,4 +1,4 @@
-class Api::V1::QuestionsController < ApplicationController
+class Api::QuestionsController < ApplicationController
   def create
     Question.create(image_url: question_params[:image_url], user: User.first)
     render  head: :ok
