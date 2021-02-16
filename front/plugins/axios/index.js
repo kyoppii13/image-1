@@ -1,25 +1,24 @@
-// export let axios
+import humps from 'humps'
 
-// export default ({ store, $axios }) => {
-//   $axios.defaults.baseURL = 'http://localhost:5000'
-
-//   $axios.onRequest((config) => {
-//     config.headers.common['Authorization'] = localStorage.getItem(
-//       'auth._token.local'
-//     )
-//   })
-
-//   axios = $axios
-// }
-
+const transformResponse = (data) => {
+  return JSON.parse(JSON.stringify(humps.camelizeKeys(data)))
+}
+const transformRequest = (data) => {
+  return data ? JSON.stringify(humps.decamelizeKeys(JSON.parse(data))) : data
+}
 export default ({ store, $axios }) => {
-  // $axios.defaults.baseURL = process.env.BASE_URL || 'http://localhost:5000'
   $axios.defaults.baseURL = 'http://localhost:5000'
 
   $axios.onRequest((config) => {
     config.headers.common['Authorization'] = localStorage.getItem(
       'auth._token.local'
     )
-    // config.headers.common['Authorization'] = store.state.firebase.idToken
+    config.data = transformRequest(config.data)
+    return config
+  })
+
+  $axios.onResponse((response) => {
+    response = transformResponse(response)
+    return response
   })
 }

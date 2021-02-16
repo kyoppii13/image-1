@@ -1,11 +1,10 @@
 class ApplicationController < ActionController::API
-  include CommonActions
+  include Api::CommonActions
 
   class InvalidatedJwtError < StandardError; end
 
   rescue_from InvalidatedJwtError do |e|
-    Rails.logger.error "#{e.message}"
-    render_error(code: 401, message: 'unauthorized', display_message: 'unauthorized')
+    render_error(code: 401, message: 'UNAUTHORIZED', display_message: 'UNAUTHORIZED')
   end
 
   def current_user
@@ -17,26 +16,26 @@ class ApplicationController < ActionController::API
       end
   end
 
-  def get_email_Jwt
+  def get_payload_Jwt
     begin
       jwt_token = request.headers['Authorization']
-      Rails.logger.debug jwt_token
-      email = Utils::JwtValidator.new(jwt_token).validate!['email']
-      Rails.logger.debug 'test3'
+      Rails.logger.debug(Utils::JwtValidator.new(jwt_token).validate!)
+      Utils::JwtValidator.new(jwt_token).validate!
     rescue StandardError => e
       raise(InvalidatedJwtError, e)
     end
-    email
   end
 
   def validate_jwt
     return if @current_user
 
-    email = get_email_Jwt
+    email = get_payload_Jwt['email']
+    name = get_payload_Jwt['name']
+    picture = get_payload_Jwt['picture']
 
     user = User.find_by(email: email)
     unless user.present?
-      user = User.create!(email: email)
+      user = User.create!(email: email, name: name, profile_image: picture)
     end
     session[:user_id] = user.id
     @current_user = user

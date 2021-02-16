@@ -11,7 +11,7 @@ RUN mkdir -p ${APP_ROOT}
 WORKDIR $APP_ROOT
 
 COPY Gemfile ${APP_ROOT}/Gemfile
-COPY Gemfile.lock ${APP_ROOT}/Gemfile.lock
+# COPY Gemfile.lock ${APP_ROOT}/Gemfile.lock
 
 RUN bundle install
 

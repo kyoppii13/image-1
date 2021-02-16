@@ -1,22 +1,20 @@
-import axios from 'axios'
 import firebase from '~/plugins/firebase'
 import { requestState } from './common/request-state'
 
 export const state = {
   loadingUser: requestState.default(),
   error: undefined,
-  user: undefined,
+  user: {},
 }
 export const mutations = {
-  loadUserRequest(state) {
+  loadingUserRequest(state) {
     state.loadingUser = requestState.processing()
   },
-  loadUserSuccess(state, user) {
-    console.log(`success!!!!!! ${user}`)
+  loadingUserSuccess(state, user) {
     state.user = user
     state.loadingUser = requestState.success()
   },
-  loadUserFailure(state, error) {
+  loadingUserFailure(state, error) {
     state.error = error
     state.loadingUser = requestState.failure()
   },
@@ -24,14 +22,14 @@ export const mutations = {
 export const getters = {}
 export const actions = {
   loadUser({ commit }) {
-    commit('loadUserRequest')
+    commit('loadingUserRequest')
     this.$axios
       .get('http://localhost:5000/api/users/mypage')
       .then((res) => {
-        commit('loadUserSuccess', res.data)
+        commit('loadingUserSuccess', res.data)
       })
       .catch((err) => {
-        commit('loadUserFailure', err)
+        commit('loadingUserFailure', err)
       })
   },
 }

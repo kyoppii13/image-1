@@ -5,6 +5,12 @@
   "LazyLogo": {
     "description": "Auto imported from /components/Logo.vue"
   },
+  "ProgressCircle": {
+    "description": "Auto imported from /components/ProgressCircle.vue"
+  },
+  "LazyProgressCircle": {
+    "description": "Auto imported from /components/ProgressCircle.vue"
+  },
   "VuetifyLogo": {
     "description": "Auto imported from /components/VuetifyLogo.vue"
   },

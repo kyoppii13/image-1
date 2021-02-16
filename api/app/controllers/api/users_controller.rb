@@ -1,10 +1,11 @@
 class Api::UsersController < ApplicationController
-  before_action :validate_jwt, except: :create
+  include Api::CommonActions
+  before_action :validate_jwt
 
   def mypage
     @user = current_user
 
-    render :template => "api/users/mypage.json.jb"
+    render "api/users/user.json.jb"
   end
 
   def show
@@ -14,12 +15,12 @@ class Api::UsersController < ApplicationController
   end
 
   def create
-    email = get_email_Jwt
-    user = User.find_by(email: email)
-    unless user.present?
-      user = User.create!(email: email)
+    if current_user
+      render json: {user: current_user} ,status: 200
+    else
+      render_bad_request(display_message: 'ユーザ登録エラー')
     end
-    render json: {user: user} ,status: 200
+
   end
 
   private

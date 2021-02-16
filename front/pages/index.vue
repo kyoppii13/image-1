@@ -16,7 +16,6 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { mapActions } from 'vuex'
 import firebase from '../plugins/firebase'
 
 export default Vue.extend({
@@ -50,9 +49,8 @@ export default Vue.extend({
           .currentUser?.getIdToken(true)
           .then((idToken) => {
             localStorage.setItem('auth._token.local', idToken)
-            this.$store.dispatch('firebase/setLogin', true)
             this.$axios.$post('/api/users').then((res) => {
-              console.log(res)
+              this.$store.dispatch('firebase/setLogin', true)
             })
           })
       })
