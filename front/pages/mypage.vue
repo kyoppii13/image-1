@@ -1,9 +1,12 @@
 <template>
   <div>
-    <v-row justify="center" class="text-center">
-      <v-col cols="12">名前: {{ user.name }}</v-col>
-      <v-col cols="12">Email: {{ user.email }}</v-col>
-      <v-col cols="12"><v-img :src="user.profileImage"></v-img></v-col>
+    <v-row justify="center" class="text-center" align="center">
+      <v-col cols="12">名前： {{ user.name }}</v-col>
+      <v-col cols="12">Email： {{ user.email }}</v-col>
+      <v-col cols="12"
+        ><span>プロフィール画像：</span>
+        <v-avatar size="100"><img :src="user.profileImage" style="vertical-align: middle"></img
+      ></v-avatar></v-col>
 
       <v-col cols="12">
         <v-btn text><NuxtLink to="/">トップページ</NuxtLink></v-btn>

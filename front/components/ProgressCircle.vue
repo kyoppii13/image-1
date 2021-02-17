@@ -1,5 +1,11 @@
 <template>
-  <v-progress-circular v-show="isProgress" indeterminate color="primary">
+  <v-progress-circular
+    class="progress-circle"
+    v-show="isProgress"
+    indeterminate
+    color="primary"
+    size="100"
+  >
   </v-progress-circular>
 </template>
 
@@ -15,4 +21,11 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+.progress-circle {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+</style>
