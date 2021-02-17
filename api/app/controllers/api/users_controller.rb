@@ -15,12 +15,7 @@ class Api::UsersController < ApplicationController
   end
 
   def create
-    if current_user
-      render json: {user: current_user} ,status: 200
-    else
-      render_bad_request(display_message: 'ユーザ登録エラー')
-    end
-
+    render json: {user: current_user} ,status: 200
   end
 
   private

@@ -5,9 +5,11 @@
         <v-toolbar-title v-text="title" />
       </nuxt-link>
       <v-spacer />
-      <v-btn v-if="isLogin" @click="logout()">logout</v-btn>
+      <v-btn v-if="isLogin" @click="logout()" outlined>logout</v-btn>
+      <v-avatar v-if="isLogin"><nuxt-link to="/mypage"><img :src="user.profileImage"></img></nuxt-link></v-avatar>
     </v-app-bar>
     <v-main>
+      <snackbar></snackbar>
       <v-container>
         <nuxt />
       </v-container>
@@ -48,11 +50,16 @@ export default Vue.extend({
     isLogin() {
       return this.$store.state.firebase.isLogin
     },
+    user() {
+      return this.$store.state.user.user
+    }
   },
   methods: {
     logout() {
       this.$store.dispatch('firebase/logout')
     },
+  },
+  created() {
   },
 })
 </script>

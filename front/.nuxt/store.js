@@ -18,6 +18,8 @@ let store = {};
   store.modules = store.modules || {}
 
   resolveStoreModules(require('../store/firebase.js'), 'firebase.js')
+  resolveStoreModules(require('../store/question.js'), 'question.js')
+  resolveStoreModules(require('../store/ui.js'), 'ui.js')
   resolveStoreModules(require('../store/user.js'), 'user.js')
   resolveStoreModules(require('../store/common/request-state.js'), 'common/request-state.js')
 
@@ -27,6 +29,8 @@ let store = {};
     // Whenever any Vuex module is updated...
     module.hot.accept([
       '../store/firebase.js',
+      '../store/question.js',
+      '../store/ui.js',
       '../store/user.js',
       '../store/common/request-state.js',
     ], () => {

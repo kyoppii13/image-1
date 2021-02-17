@@ -9,4 +9,7 @@ Rails.application.routes.draw do
     resources :questions, only: [:index, :show, :create]
     get 'health_check', to: 'health_checks#index'
   end
+  get '*not_found', to: 'application#routing_error'
+  post '*not_found', to: 'application#routing_error'
+  put '*not_found', to: 'application#routing_error'
 end

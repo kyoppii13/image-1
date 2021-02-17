@@ -1,4 +1,10 @@
 {
+  "AlertMessage": {
+    "description": "Auto imported from /components/AlertMessage.vue"
+  },
+  "LazyAlertMessage": {
+    "description": "Auto imported from /components/AlertMessage.vue"
+  },
   "Logo": {
     "description": "Auto imported from /components/Logo.vue"
   },
@@ -10,6 +16,12 @@
   },
   "LazyProgressCircle": {
     "description": "Auto imported from /components/ProgressCircle.vue"
+  },
+  "Snackbar": {
+    "description": "Auto imported from /components/Snackbar.vue"
+  },
+  "LazySnackbar": {
+    "description": "Auto imported from /components/Snackbar.vue"
   },
   "VuetifyLogo": {
     "description": "Auto imported from /components/VuetifyLogo.vue"

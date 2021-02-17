@@ -1,0 +1,6 @@
+development:
+  aws:
+    s3:
+      bucket: 'image-q-dev'
+      prefix: 'questions'
+      image_domain: 'https://image.image-q.com'

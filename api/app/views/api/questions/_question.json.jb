@@ -1,0 +1,6 @@
+{
+  user: question.user.name,
+  image_url: question.image_url,
+  created_at: question.created_at,
+  updated_at: question.updated_at,
+}

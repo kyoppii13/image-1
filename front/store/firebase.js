@@ -3,6 +3,8 @@ import { requestState } from './common/request-state'
 
 export const state = () => ({
   isLogin: false,
+  formError: undefined,
+  isLoading: false,
 })
 
 export const mutations = {
@@ -15,6 +17,9 @@ export const mutations = {
   logout(state) {
     state.isLogin = false
     state.idToken = ''
+  },
+  formError(state, error) {
+    state.error = error
   },
 }
 export const actions = {
@@ -40,5 +45,8 @@ export const actions = {
           resolve()
         })
     })
+  },
+  setFormError({ commit }, error) {
+    commit('formError', error)
   },
 }

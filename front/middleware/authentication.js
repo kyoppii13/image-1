@@ -8,17 +8,18 @@ export default function ({ store, redirect, route }) {
         .currentUser?.getIdToken(true)
         .then((idToken) => {
           localStorage.setItem('auth._token.local', idToken)
-          // store.dispatch('firebase/setLogin', true)
+          store.dispatch('firebase/setLogin', true)
+          console.log('aaaa')
         })
       if (route.name === 'login') {
         redirect('/')
       }
     } else {
-      // store.dispatch('firebase/logout')
       if (!store.state.firebase.isLogin && route.name === 'index') {
       } else if (!store.state.firebase.isLogin && route.name !== 'login') {
         redirect('/login')
       }
     }
+    store.dispatch('firebase/setLoading', false)
   })
 }

@@ -4,7 +4,8 @@ const transformResponse = (data) => {
   return JSON.parse(JSON.stringify(humps.camelizeKeys(data)))
 }
 const transformRequest = (data) => {
-  return data ? JSON.stringify(humps.decamelizeKeys(JSON.parse(data))) : data
+  // return data ? JSON.stringify(humps.decamelizeKeys(JSON.parse(data))) : data
+  return data
 }
 export default ({ store, $axios }) => {
   $axios.defaults.baseURL = 'http://localhost:5000'

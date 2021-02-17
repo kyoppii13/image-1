@@ -12,6 +12,6 @@ ADD . ${APP_HOME}
 
 EXPOSE 3000
 
-RUN yarn generate
+# RUN yarn generate
 
 CMD ["yarn", "start"]

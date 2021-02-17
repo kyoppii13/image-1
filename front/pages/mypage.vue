@@ -9,7 +9,7 @@
       ></v-avatar></v-col>
 
       <v-col cols="12">
-        <v-btn text><NuxtLink to="/">トップページ</NuxtLink></v-btn>
+        <v-btn text><nuxt-link to="/">トップページ</nuxt-link></v-btn>
       </v-col>
     </v-row>
     <progress-circle :isProgress="loadingUserData"></progress-circle>

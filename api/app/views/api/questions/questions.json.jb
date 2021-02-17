@@ -1,0 +1,3 @@
+@questions.map do |question|
+  render 'api/questions/question.json.jb', question: question
+end

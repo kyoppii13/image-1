@@ -35,5 +35,6 @@ module App
     config.api_only = true
     config.paths.add 'lib', eager_load: true
     config.log_level = :debug
+    config.x.application = config_for(:application)
   end
 end

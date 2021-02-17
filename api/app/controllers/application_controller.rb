@@ -4,7 +4,15 @@ class ApplicationController < ActionController::API
   class InvalidatedJwtError < StandardError; end
 
   rescue_from InvalidatedJwtError do |e|
-    render_error(code: 401, message: 'UNAUTHORIZED', display_message: 'UNAUTHORIZED')
+    render_unauthorized(details: ['認証エラー'])
+  end
+
+  rescue_from ActionController::RoutingError do |e|
+    render_not_found(display_message: e.message)
+  end
+
+  def routing_error
+    raise ActionController::RoutingError, params[:not_found]
   end
 
   def current_user
@@ -19,10 +27,9 @@ class ApplicationController < ActionController::API
   def get_payload_Jwt
     begin
       jwt_token = request.headers['Authorization']
-      Rails.logger.debug(Utils::JwtValidator.new(jwt_token).validate!)
       Utils::JwtValidator.new(jwt_token).validate!
     rescue StandardError => e
-      raise(InvalidatedJwtError, e)
+      raise(InvalidatedJwtError)
     end
   end
 
@@ -30,11 +37,11 @@ class ApplicationController < ActionController::API
     return if @current_user
 
     email = get_payload_Jwt['email']
-    name = get_payload_Jwt['name']
-    picture = get_payload_Jwt['picture']
 
     user = User.find_by(email: email)
     unless user.present?
+      name = get_payload_Jwt['name']
+      picture = get_payload_Jwt['picture']
       user = User.create!(email: email, name: name, profile_image: picture)
     end
     session[:user_id] = user.id
